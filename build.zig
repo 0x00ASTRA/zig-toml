@@ -1,10 +1,11 @@
+// build.zig
 const std = @import("std");
 
 pub fn build(b: *std.Build) void {
     const optimizeOpt = b.standardOptimizeOption(.{});
     const targetOpt = b.standardTargetOptions(.{});
 
-    const module = b.addModule("zig-toml", .{ .root_source_file = b.path("src/main.zig") });
+    const core_module = b.addModule("zig-toml", .{ .root_source_file = b.path("src/main.zig") });
 
     const main_tests = b.addTest(.{
         .root_source_file = b.path("src/tests.zig"),
@@ -23,7 +24,8 @@ pub fn build(b: *std.Build) void {
         .target = targetOpt,
         .optimize = optimizeOpt,
     });
-    example1.root_module.addImport("zig-toml", module);
+    example1.root_module.addImport("zig-toml", core_module);
+
     b.installArtifact(example1);
 
     const run_example1 = b.addRunArtifact(example1);

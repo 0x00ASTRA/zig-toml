@@ -1,11 +1,11 @@
 const std = @import("std");
 
-const parser = @import("./parser.zig");
-const table = @import("./table.zig");
-const struct_mapping = @import("./struct_mapping.zig");
-const datetime = @import("./datetime.zig");
-const value = @import("./value.zig");
-const serialize = @import("serialize/root.zig");
+const parser = @import("parser.zig");
+const table = @import("table.zig");
+const struct_mapping = @import("struct_mapping.zig");
+const datetime = @import("datetime.zig");
+const value = @import("value.zig");
+const serialize = @import("serialize.zig");
 
 pub const Table = table.Table;
 pub const Date = datetime.Date;
